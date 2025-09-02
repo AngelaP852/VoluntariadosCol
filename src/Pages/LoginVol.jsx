@@ -132,7 +132,7 @@ const Login = () => {
           className="btn google xl"
           onClick={async () => {
             await loginGoogle();
-            navigate("/");
+            navigate("/register");
           }}
         >
           <span className="g-icon" aria-hidden>G</span>

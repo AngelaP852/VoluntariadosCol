@@ -39,7 +39,7 @@ const LoginOrg = () => {
           setFormData
         );
       }
-      navigate("/"); // Home
+      navigate("/dashboard-org");
     } catch (error) {
       console.log("Error de autenticación:", error);
       setFormData({ ...formData, error: "Error al iniciar sesión o registrarse" });
@@ -135,7 +135,7 @@ const LoginOrg = () => {
           className="btn google xl"
           onClick={async () => {
             await loginGoogle();
-            navigate("/");
+            navigate("/dashboard-org");
           }}
         >
           <span className="g-icon" aria-hidden>G</span>

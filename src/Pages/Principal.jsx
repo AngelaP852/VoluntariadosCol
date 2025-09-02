@@ -13,8 +13,8 @@ const Principal = () => {
           </a>
 
           <div className="actions">
-            <a className="btn ghost" href="/login">Voluntario</a>
-            <a className="btn primary" href="/register">Organización</a>
+            <a className="btn ghost" href="/loginVol">Voluntario</a>
+            <a className="btn primary" href="/login-org">Organización</a>
           </div>
         </div>
       </nav>
@@ -31,8 +31,8 @@ const Principal = () => {
         </p>
 
         <div className="hero-buttons">
-          <a href="/login" className="btn xl solid">Explorar Actividades</a>
-          <a href="/admin" className="btn xl light">Registrar Organización</a>
+          <a href="/loginVol" className="btn xl solid">Explorar Actividades</a>
+          <a href="/login-org" className="btn xl light">Registrar Organización</a>
         </div>
       </main>
     </div>

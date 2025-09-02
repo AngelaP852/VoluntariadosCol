@@ -1,0 +1,215 @@
+/* =========================
+   Dashboard + Navbar (todo blanco)
+   ========================= */
+
+/* Variables */
+:root{
+  --nav-h: 64px;
+  --primary: #2563eb;
+  --primary-700: #1d4ed8;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e5e7eb;
+  --blue: #2563eb;
+  --pink: #ec4899;
+  --shadow: 0 10px 30px rgba(2, 8, 23, .06);
+}
+
+/* Reset básico */
+*{ box-sizing: border-box; }
+h1,h2,h3,p{ margin:0; }
+
+/* Fondo 100% blanco (anula cualquier gradiente previo) */
+html, body, #root{
+  background: #fff !important;
+  background-image: none !important;
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial;
+}
+
+/* Página y contenedor principal */
+.dash-page{ background:#fff; min-height:100vh; }
+.dashboard{
+  background:#fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 20px) 20px 80px; /* espacio por navbar fija */
+  color: var(--text);
+}
+
+/* =========================
+   NAVBAR (dentro del dashboard)
+   ========================= */
+.dash-navbar{
+  position: fixed;
+  top:0; left:0; right:0;
+  height: var(--nav-h);
+  background: #fff;                 /* blanco */
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+.dash-nav-inner{
+  height: 100%;
+  max-width: 1200px;
+  margin-left: 2;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo{ width: 28px; height: 28px; border-radius: 8px; }
+.brand-text{
+  font-weight: 800; font-size: 1.2rem;
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+.nav-menu{ display: flex; gap: 28px; }
+.nav-menu a{
+  color: #334155; text-decoration: none; font-weight: 600;
+}
+.nav-menu a:hover{ color: #0f172a; }
+
+.nav-right{ margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.nav-avatar{
+  width: 36px; height: 36px; border-radius: 999px;
+  background: #f1f5f9;             /* neutro */
+  border: 1px solid var(--border);
+}
+
+.button-close{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+} 
+
+/* =========================
+   Header de página
+   ========================= */
+.page-header{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.page-title{
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-subtitle{ margin-top: 6px; color: var(--muted); }
+
+/* Botones genéricos */
+.btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 16px;
+  border-radius: 12px; border: 1px solid transparent;
+  font-weight: 700; cursor: pointer; text-decoration: none;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.btn.primary{ background: var(--primary); color: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.btn.primary:hover{ background: var(--primary-700); }
+.btn.ghost{ background: #fff; color:#111827; border:1px solid var(--border); }
+.btn.ghost:hover{ background: #f8fafc; }
+.btn.light{ background: #fff; color:#111827; border:1px solid var(--border); }
+.btn.light:hover{ background: #f8fafc; }
+.new-activity .plus{ font-weight: 900; margin-right: 6px; }
+
+/* =========================
+   KPI Cards
+   ========================= */
+.kpi-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 12px 0 28px;
+}
+.kpi-card{
+  background: #fff;                 /* blanco */
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+}
+.kpi-head{ display: flex; justify-content: space-between; align-items: center; }
+.kpi-head h3{ font-size: .98rem; font-weight: 700; color:#334155; }
+.kpi-icon{ color:#94a3b8; font-size: 1.1rem; }
+.kpi-value{ font-size: 2rem; font-weight: 800; margin-top: 10px; }
+.kpi-hint{ color: var(--muted); margin-top: 6px; }
+
+/* =========================
+   Tabs
+   ========================= */
+.tabs{ display: flex; gap: 10px; margin-bottom: 16px; }
+.tab{
+  height: 36px; padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;                 /* blanco */
+  color:#111827; font-weight: 700; cursor: pointer;
+}
+.tab.active{
+  background: #fff;                 /* también blanco */
+  box-shadow: inset 0 0 0 1px #e8ecf3;
+}
+
+/* =========================
+   Panel listado
+   ========================= */
+.panel{
+  background: #fff;                 /* blanco */
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.panel-head h2{ font-size: 1.15rem; font-weight: 800; }
+.panel-head p{ color: var(--muted); margin-top: 4px; }
+
+.activity-list{ margin-top: 14px; display: grid; gap: 12px; }
+
+.activity-item{
+  background: #fff;                 /* blanco */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.activity-title{ display:flex; align-items:center; gap:10px; }
+.activity-title h3{ font-size: 1.05rem; font-weight: 800; }
+.badge{
+  height: 24px; padding: 0 10px; border-radius: 999px;
+  font-size: .85rem; font-weight: 800;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #e8f0fe; color: #1e40af; /* etiqueta "Publicada" */
+}
+
+.activity-desc{ color: var(--muted); margin: 8px 0; }
+.activity-meta{ display:flex; gap: 18px; color:#475569; font-size: .95rem; }
+.activity-actions{ display:flex; gap: 10px; }
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 1100px){
+  .kpi-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .kpi-grid{ grid-template-columns: 1fr; }
+  .activity-item{ grid-template-columns: 1fr; gap: 12px; }
+  .page-header{ grid-template-columns: 1fr; }
+  .new-activity{ width: 100%; }
+  .dash-nav-inner{ gap: 16px; }
+  .nav-menu{ display: none; } /* simplifica navbar en móvil */
+}

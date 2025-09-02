@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { loginGoogle, loginUsuario, registroUsuario, resetPassword } from "../Firebase/client";
 import "../Styles/LoginVol.css";
 
-const Login = () => {
+const LoginOrg = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
@@ -34,9 +34,12 @@ const Login = () => {
       if (isLogin) {
         await loginUsuario(formData, setFormData);
       } else {
-        await registroUsuario(formData, setFormData);
+        await registroUsuario(
+          { ...formData, rol: "admin" }, // Changed role to "admin" for organization
+          setFormData
+        );
       }
-      navigate("/"); // Home
+      navigate("/dashboard-org");
     } catch (error) {
       console.log("Error de autenticación:", error);
       setFormData({ ...formData, error: "Error al iniciar sesión o registrarse" });
@@ -81,7 +84,7 @@ const Login = () => {
         <p className="auth-desc">
           {isLogin
             ? "Ingrese su correo electrónico para iniciar esta aplicación."
-            : "Ingrese los datos correspondientes para registrarse."}
+            : "Ingrese los datos correspondientes para registrarse como organización."}
         </p>
 
         {!isLogin && (
@@ -132,7 +135,7 @@ const Login = () => {
           className="btn google xl"
           onClick={async () => {
             await loginGoogle();
-            navigate("/register");
+            navigate("/dashboard-org");
           }}
         >
           <span className="g-icon" aria-hidden>G</span>
@@ -156,4 +159,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginOrg;
